@@ -15,6 +15,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <script async
+    src="https://maps.googleapis.com/maps/api/js?key=&loading=async&libraries=visualization&callback=initMap">
+</script>
           Learn React
         </a>
       </header>
