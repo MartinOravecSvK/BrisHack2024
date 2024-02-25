@@ -12,6 +12,11 @@ from utils.preprocessor import preprocess_input
 
 # Import the required library
 from geopy.geocoders import Nominatim
+# from firebase import Firebase
+
+import asyncio
+import aiohttp
+import json
 
 # Initialize Nominatim API
 geolocator = Nominatim(user_agent="MyApp")
@@ -21,9 +26,31 @@ while True:
     location = geolocator.geocode(user_input)
     if location is not None:
         break
-    
+
 print("The latitude of the location is: ", location.latitude)
 print("The longitude of the location is: ", location.longitude)
+
+# Set up firebase
+
+
+async def add_map_data(geopoint, user_name, emotion_string):
+    url = 'https://brishack-f6111-default-rtdb.europe-west1.firebasedatabase.app/users.json'
+    data = {
+        'geopoint': geopoint,
+        'emotion': emotion_string
+    }
+    async with aiohttp.ClientSession() as session:
+        async with session.post(url, data=json.dumps(data), headers={'Content-Type': 'application/json'}) as response:
+            if response.status == 200:
+                data = await response.json()
+                print('Data saved:', data)
+            else:
+                print('Failed to save data')
+
+# Example usage
+# geopoint = {'latitude': 40.7128, 'longitude': -74.0060}
+# emotion_string = 'Happy'
+# asyncio.run(add_map_data(geopoint, emotion_string))
 
 USE_WEBCAM = True # If false, loads video file source
 
@@ -113,6 +140,13 @@ while cap.isOpened(): # True:
 
     bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
     cv2.imshow('window_frame', bgr_image)
+
+    try:
+        asyncio.run(add_map_data({'latitude': location.latitude, 'longitude': location.longitude}, 'user', emotion_mode))
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        continue
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
