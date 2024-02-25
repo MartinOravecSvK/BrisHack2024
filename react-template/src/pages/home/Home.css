@@ -1,7 +1,13 @@
 .homeScreen {
-  flex: 1;
-  padding: 15px;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+}
 
+.mapContainer {
+  width: 50%;
+  height: 80vh; /* Adjust the height as needed */
+  position: relative;
+  border-radius: 12px; /* Add rounded corners */
+  overflow: hidden; /* Ensure content doesn't overflow rounded corners */
 }

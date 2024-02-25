@@ -1,0 +1,15 @@
+opencv-python
+keras
+tensorflow
+numpy
+imageio
+pillow
+pandas
+matplotlib
+h5py
+scipy
+geopy
+pyrebase
+firebase
+aiohttp
+asyncio

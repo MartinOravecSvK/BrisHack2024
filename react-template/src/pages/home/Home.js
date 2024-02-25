@@ -56,56 +56,20 @@ const Home = () => {
 
   return (
     <div className='homeScreen'>
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          placeholder='Emotion'
-          value={emotion}
-          onChange={(e) => setEmotion(e.target.value)}
-          required
+      <div className='mapContainer'>
+        <Map
+          streetViewControl={false}
+          google={window.google}
+          style={{ width: '100%', height: '100%', position: 'relative', borderRadius: '12px' }}
+          zoom={6}
+          initialCenter={{
+            lat: 53.6781,
+            lng: -3.4360,
+          }}
         />
-        <input
-          type='number'
-          placeholder='Latitude'
-          value={latitude}
-          onChange={(e) => setLatitude(e.target.value)}
-          required
-        />
-        <input
-          type='number'
-          placeholder='Longitude'
-          value={longitude}
-          onChange={(e) => setLongitude(e.target.value)}
-          required
-        />
-        <button type='submit'>Add Map Data</button>
-      </form>
-
-      {/* {data ? (
-        <ul>
-          {Object.entries(data).map(([key, value]) => (
-            <li key={key}>
-              Emotion: {value.emotion}, Location: {value.geopoint.latitude},{' '}
-              {value.geopoint.longitude}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div>No data available</div>
-      )} */}
-
-      <Map
-        // get rid of the ability to use street view
-        streetViewControl={false}
-        google={window.google}
-        style={{ width: '100%', height: '100%', position: 'relative' }}
-        zoom={6}
-        initialCenter={{
-          lat: 53.6781,
-          lng: -3.4360,
-        }}
-      />
+      </div>
     </div>
+
   );
 };
 
