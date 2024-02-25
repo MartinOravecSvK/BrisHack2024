@@ -2,6 +2,20 @@
   display: flex;
   align-items: center;
   height: 100vh; /* Full height of the viewport */
+  padding-left: 20px;
+  background-image: url('bg.jpg'); /* Replace with the path to your image */
+  background-size: contain; /* Adjust based on how you want the background to be sized */
+  background-position: center; /* Adjust based on how you want the background to be positioned */
+}
+
+.homeScreen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(253, 253, 253, 0.5); /* Adjust the color and opacity (0.5 is 50% opacity) */
 }
 
 .mapContainer {
@@ -10,4 +24,6 @@
   position: relative;
   border-radius: 12px; /* Add rounded corners */
   overflow: hidden; /* Ensure content doesn't overflow rounded corners */
+  margin-left: 20px;
+  margin-top: 20px;
 }
