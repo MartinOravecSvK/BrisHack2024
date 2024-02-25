@@ -10,6 +10,21 @@ from utils.inference import apply_offsets
 from utils.inference import load_detection_model
 from utils.preprocessor import preprocess_input
 
+# Import the required library
+from geopy.geocoders import Nominatim
+
+# Initialize Nominatim API
+geolocator = Nominatim(user_agent="MyApp")
+
+while True:
+    user_input = input("Enter your Location: ")
+    location = geolocator.geocode(user_input)
+    if location is not None:
+        break
+    
+print("The latitude of the location is: ", location.latitude)
+print("The longitude of the location is: ", location.longitude)
+
 USE_WEBCAM = True # If false, loads video file source
 
 # parameters for loading data and images
