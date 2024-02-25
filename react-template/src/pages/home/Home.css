@@ -1,0 +1,7 @@
+.homeScreen {
+  flex: 1;
+  padding: 15px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+}
