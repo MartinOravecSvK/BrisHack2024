@@ -42,7 +42,7 @@ const Home = () => {
       <form onSubmit={handleSubmit}>
         <input
           type='text'
-          placeholder='User Name'
+          placeholder='Emotion'
           value={emotion}
           onChange={(e) => setEmotion(e.target.value)}
           required
