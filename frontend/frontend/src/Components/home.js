@@ -6,10 +6,8 @@ const MapComponent = () => {
   useEffect(() => {
     // Define bounds for the UK
     const bounds = [
-    //   [49.823809, -8.649357], // Southwest coordinates
-    //   [30, -8.5],
-    //   [80, 1.7]
-    //   [60.951326, 1.721502]   // Northeast coordinates
+        [49.823809, -8.649357], // Southwest coordinates
+        [60.951326, 1.721502]   // Northeast coordinates
     ];
 
     // Initialize the map with restricted bounds and disabled dragging
@@ -33,7 +31,7 @@ const MapComponent = () => {
     }).addTo(map);
 
     // Add zoom control with restricted zoom levels
-    L.control.zoom({ position: 'topright', maxZoom: 6, minZoom: 6 }).addTo(map);
+    // L.control.zoom({ position: 'topright', maxZoom: 6, minZoom: 6 }).addTo(map);
 
     return () => {
       // Cleanup function to remove the map instance when component unmounts
@@ -41,7 +39,7 @@ const MapComponent = () => {
     };
   }, []); // Empty dependency array ensures useEffect runs only once
 
-  return <div id="map" style={{ width: '100%', height: '500px' }}></div>;
+  return <div id="map" style={{ width: '50%', height: '1000px' }}></div>;
 };
 
 export default MapComponent;
