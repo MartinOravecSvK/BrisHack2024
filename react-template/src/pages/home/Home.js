@@ -18,7 +18,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 // `;
 
 import './Home.css';
-const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;  
 
 const Home = () => {
   const dispatch = useDispatch();
