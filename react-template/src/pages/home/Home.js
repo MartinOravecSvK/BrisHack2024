@@ -19,7 +19,7 @@ const Home = () => {
   // fetch data from firebase realtime database
   useEffect(() => {
     dispatch(getMapData());
-  }, []);
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const Home = () => {
       <form onSubmit={handleSubmit}>
         <input
           type='text'
-          placeholder='User Name'
+          placeholder='Emotion'
           value={emotion}
           onChange={(e) => setEmotion(e.target.value)}
           required
