@@ -145,4 +145,5 @@ dependencies:
   - yaml=0.2.5=h7f98852_2
   - zlib=1.2.13=hd590300_5
   - zstd=1.5.5=hfc55251_0
-prefix: /home/martin/Downloads/yes/envs/brishack
+prefix: /Users/lukeedwards/Desktop/BrisHack2024/backend/env
+```
