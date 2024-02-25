@@ -19,7 +19,7 @@ const Home = () => {
   // fetch data from firebase realtime database
   useEffect(() => {
     dispatch(getMapData());
-  }, []);
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
