@@ -33,8 +33,25 @@ const Home = () => {
   const addMapDataReducer = useSelector((state) => state.addMapData);
   const { error: errorAdding, loading: addLoading, data: addMap } = addMapData;
 
+  const loadGoogleMapsScript = () => {
+    // Check if the script is already loaded
+    if (!window.google) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization&callback=initMap';
+        script.async = true;
+        document.body.appendChild(script);
+        // script.onload = () => {
+        //     initMap(); // Make sure this function is defined to initialize your map
+        // };
+    } else {
+        // initMap(); // If script is already loaded, directly call the initMap
+    }
+  };  
+
   // fetch data from firebase realtime database
   useEffect(() => {
+    loadGoogleMapsScript();
     dispatch(getMapData());
   }, [dispatch]);
 
@@ -50,6 +67,23 @@ const Home = () => {
     setLatitude('');
     setLongitude('');
   };
+
+  const heatmapData = [
+    new window.google.maps.LatLng(37.782, -122.447),
+    new window.google.maps.LatLng(37.782, -122.445),
+  ];
+
+  var ukCenter = new window.google.maps.LatLng(53.6781, -3.4360);
+
+  const map = new window.google.maps.Map(document.getElementById('map'), {
+    center: ukCenter,
+    zoom: 6,
+  });
+
+  const heatmap = new window.google.maps.visualization.HeatmapLayer({
+    data: data,
+  });
+  heatmap.setMap(map);
 
   if (loading) return <div className='homeScreen'>Loading...</div>;
   if (error) return <div className='homeScreen'>Error: {error}</div>;
@@ -104,9 +138,30 @@ const Home = () => {
           lat: 53.6781,
           lng: -3.4360,
         }}
-      />
+      >
+        <HeatmapLayer data={heatmapData} />
+        
+      </Map>
+      {/* <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_Key&libraries=visualization&callback=initMap"></script> */}
+
     </div>
   );
+};
+
+
+const HeatmapLayer = ({ data }) => {
+  useEffect(() => {
+    const heatmap = new window.google.maps.visualization.HeatmapLayer({
+      data: data,
+    });
+
+    return () => {
+      // Clean up when the component is unmounted
+      heatmap.setMap(null);
+    };
+  }, [data]);
+
+  return null;
 };
 
 // Get rid of the key
