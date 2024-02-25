@@ -1,32 +1,21 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import {
-  userRegisterReducer,
-  userLoginReducer,
-  listProfilesReducer,
-  updateProfileReducer,
-  uploadImageReducer,
-  listInvitationsReducer,
-  sendInvitationReducer,
-} from './reducers/reducers';
+import { addMapDataReducer, getMapDataReducer } from './reducers/reducers';
 
 const reducer = combineReducers({
-  userRegister: userRegisterReducer,
-  userLogin: userLoginReducer,
-  listProfiles: listProfilesReducer,
-  updateProfile: updateProfileReducer,
-  listInvitations: listInvitationsReducer,
-  sendInvitation: sendInvitationReducer,
-  uploadImage: uploadImageReducer
+  addMapData: addMapDataReducer,
+  getMapData: getMapDataReducer,
 });
 
-const userInfoFromStorage = localStorage.getItem('@userData')
-  ? JSON.parse(localStorage.getItem('@userData'))
-  : null;
+// const userInfoFromStorage = localStorage.getItem('@userData')
+//   ? JSON.parse(localStorage.getItem('@userData'))
+//   : null;
 
-const initialState = {
-  userLogin: { data: userInfoFromStorage },
-};
+// const initialState = {
+//   userLogin: { data: userInfoFromStorage },
+// };
+
+const initialState = {};
 
 const middleware = [thunk];
 

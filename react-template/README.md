@@ -22,7 +22,6 @@ REACT_APP_MODE="development"
 ```
 
 ### Run the project
-Make sure the backend (django rest template) is also running
 ```bash
 npm run start
 ```
