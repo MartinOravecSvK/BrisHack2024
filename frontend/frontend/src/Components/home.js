@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'; // Make sure to import Leaflet's CSS
+import 'leaflet.heat'; // Import Leaflet.heat
 
 const MapComponent = () => {
   useEffect(() => {
@@ -30,8 +31,19 @@ const MapComponent = () => {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Add zoom control with restricted zoom levels
-    // L.control.zoom({ position: 'topright', maxZoom: 6, minZoom: 6 }).addTo(map);
+    const emotionData = [
+        [51.5074, -0.1278, 1], // London
+        [55.9533, -3.1883, 0.8], // Edinburgh
+        // Add more data points as needed
+      ];
+
+       
+    const heatLayer = L.heatLayer(emotionData, { radius: 25 }).addTo(map);
+
+
+  
+      // Create heatmap layer
+      //const heatLayer = L.heatLayer(heatData, { radius: 25 }).addTo(map);
 
     return () => {
       // Cleanup function to remove the map instance when component unmounts
