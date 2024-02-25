@@ -36,9 +36,36 @@ const MapComponent = () => {
         [55.9533, -3.1883, 0.8], // Edinburgh
         // Add more data points as needed
       ];
+      // London coordinates
+    const londonCenter = [51.5074, -0.1278];
+    const numLocations = 50;
+    const maxIntensity = 10; // Maximum intensity value
+    const radius = 0.5; // Radius around London in degrees
+
+      const generateLocationsAroundLondon = (numLocations, maxIntensity, center, radius) => {
+        const locations = [];
+        const [centerLatitude, centerLongitude] = center;
+      
+        for (let i = 0; i < numLocations; i++) {
+          // Generate random latitude and longitude around the center of London
+          const latitude = centerLatitude - radius + (Math.random() * (radius * 2));
+          const longitude = centerLongitude - radius + (Math.random() * (radius * 2));
+      
+          // Assign higher intensity values to locations closer to the center
+          const distanceFromCenter = Math.sqrt((latitude - centerLatitude) ** 2 + (longitude - centerLongitude) ** 2);
+          const intensity = maxIntensity * (1 - (distanceFromCenter / radius));
+      
+          locations.push([latitude, longitude, 100]);
+        }
+        
+        return locations;
+      };
+  
+      const londonRedArea = generateLocationsAroundLondon(numLocations, maxIntensity, londonCenter, radius);
+  
 
        
-    const heatLayer = L.heatLayer(emotionData, { radius: 25 }).addTo(map);
+    const heatLayer = L.heatLayer(londonRedArea, { radius: 25, gradient: { 0: 'blue', 1: 'red' }}).addTo(map);
 
 
   

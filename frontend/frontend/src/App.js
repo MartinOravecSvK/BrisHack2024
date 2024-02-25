@@ -1,37 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import MapComponent from './Components/home'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MapComponent from './Components/home';
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
+import AddDataComponent from './Components/temp';
 
+const firebaseConfig = {
+  databaseURL: "https://brishack2024-teamturtles-default-rtdb.europe-west1.firebasedatabase.app/"
+};
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 function App() {
-  return <BrowserRouter>
-  {/* <Navigation id='navbar'></Navigation> */}
+  return (
+    <BrowserRouter>
       <Routes>
-          <Route path="" element={<MapComponent/>}/>
-      </Routes>
-  </BrowserRouter>;
-}
-export default App;
+        <Route path="/" element={<MapComponent />} />
+        <Route path="/temp" element={<AddDataComponent />} />
 
+
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
