@@ -1,0 +1,47 @@
+.sideBar {
+  width: 20%;
+  max-height: 100vh;
+  z-index: 1; /* Stay on top */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  overflow-y: scroll;
+  background: transparent; /* Optional: just make scrollbar invisible */
+
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;
+}
+
+.sideBar::-webkit-scrollbar {
+  display: none;
+}
+
+
+.sideButton {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 200px;
+  height: 40px;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.industries {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.filterParam {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.filterParamText {
+  cursor: pointer;
+  margin-bottom: 15px;
+  padding: 0;
+}
