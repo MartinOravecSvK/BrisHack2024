@@ -104,7 +104,7 @@ const Home = () => {
     <div className='homeScreen'>
       {/* ------------ HERO SECTION ------------------*/}
       <div className='bg-gradient-to-br from-white via-orange-200 to-orange-500 h-screen flex flex-col items-center justify-center text-center px-4'>
-        <h1 className='text-black text-[8rem] font-bold mb-4 leading-tight'>
+        <h1 className='text-black text-[8rem] mb-4 leading-tight'>
           {"MoodMap".split('').map((char, index) => (
             <span
               key={index}
