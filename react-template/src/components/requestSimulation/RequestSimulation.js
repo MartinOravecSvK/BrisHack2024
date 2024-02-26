@@ -17,6 +17,9 @@ const RequestSimulation = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+
+
+  
   return (
     <div className='requestContainer'>
       <div className='card bg-white divide-y divide-gray-200 shadow-lg overflow-y-auto'>

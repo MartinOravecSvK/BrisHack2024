@@ -20,6 +20,7 @@ const Home = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    
     if (!loading && mapRef.current && window.google && data) {
       const emotionData = {
         happy: [],
