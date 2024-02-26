@@ -108,6 +108,7 @@ async def add_map_data(geopoint, user_name, emotion_string):
 
 count = 0
 
+start_time = time.time()
 while True:
     count += 1
 
@@ -147,9 +148,10 @@ while True:
 
     # location = geolocator.geocode(location)
     # add_map_data({'latitude': 0, 'longitude': 0}, 'user', emotion)
-    time.sleep(1e-3)
     if count % 100 == 0:
-        print(f"Simulated {count} emotions")
+        end_time = time.time()
+        print(f"Time to simulate {count} emotions: {end_time - start_time}")
+        start_time = time.time()
     
 
 print("The latitude of the location is: ", location.latitude)
