@@ -146,8 +146,15 @@ while True:
     # end = time.time()
     # print(f"Time to geocode for {nation}: {end - start}")
 
-    # location = geolocator.geocode(location)
+
+
+    # Uncomment the add_map_data line to add data to Firebase
+    # Asynchronously add simulated data to Firebase
+        
     # add_map_data({'latitude': 0, 'longitude': 0}, 'user', emotion)
+
+
+
     if count % 100 == 0:
         end_time = time.time()
         print(f"Time to simulate {count} emotions: {end_time - start_time}")
