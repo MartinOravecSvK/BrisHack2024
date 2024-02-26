@@ -22,6 +22,24 @@ const RequestSimulation = () => {
   // }, [dispatch]);
 
   useEffect(() => {
+    const geocoder = new window.google.maps.Geocoder();
+
+    const convertCoordsToAddress = (lat, lng) => {
+      return new Promise((resolve, reject) => {
+        geocoder.geocode({ location: { lat, lng } }, (results, status) => {
+          if (status === 'OK') {
+            if (results[0]) {
+              resolve(results[0].formatted_address);
+            } else {
+              reject('No results found');
+            }
+          } else {
+            reject('Geocoder failed due to: ' + status);
+          }
+        });
+      });
+    };
+
     if (!loading && mapRef.current && window.google && data) {
       const emotionData = {
         happy: [],
@@ -39,13 +57,28 @@ const RequestSimulation = () => {
         const randomIndex = Math.floor(Math.random() * dataArray.length);
         const randomItem = dataArray[randomIndex];
   
-        // Create a newRequest from the random item
-        const newRequest = {
-          userLocation: randomItem.geopoint.latitude,
-          emotion: randomItem.emotion.charAt(0).toUpperCase() + randomItem.emotion.slice(1),
-        };
+        // const address = convertCoordsToAddress(randomItem.geopoint.latitude, randomItem.geopoint.longitude);
+
+        // // Create a newRequest from the random item
+        // const newRequest = {
+        //   userLocation: address.long_name,
+        //   emotion: randomItem.emotion.charAt(0).toUpperCase() + randomItem.emotion.slice(1),
+        // };
+
+        convertCoordsToAddress(randomItem.geopoint.latitude, randomItem.geopoint.longitude)
+        .then(address => {
+          const newRequest = {
+            userLocation: address, // Use the resolved address here
+            emotion: randomItem.emotion.charAt(0).toUpperCase() + randomItem.emotion.slice(1),
+          };
+          setRequests((prevRequests) => [...prevRequests, newRequest]);
+        })
+        .catch(error => {
+          console.error("Failed to convert coordinates to address:", error);
+          // Handle any errors here, such as setting a default value or notifying the user
+        });
   
-        setRequests((prevRequests) => [...prevRequests, newRequest]);
+        // setRequests((prevRequests) => [...prevRequests, newRequest]);
       }
     }, 2000);
   
