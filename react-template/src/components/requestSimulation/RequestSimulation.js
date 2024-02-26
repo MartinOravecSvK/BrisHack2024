@@ -31,28 +31,23 @@ const RequestSimulation = () => {
         surprised: [],
       };
     }
+    const newRequests = Object.values(data).map((item) => ({
+      userLocation: item.geopoint.latitude,
+      emotion: item.emotion,
+    }));
 
-    // Object.values(data).forEach((item) => {
-    //   const newRequest = {
-        
-    //     userLocation: item.geopoint.latitude,
-    //     emotion: item.emotion,
-    //   }; 
-    // });
-    
+    setRequests((prevRequests) => [...newRequests, ...prevRequests]);
     
 
     const intervalId = setInterval(() => {
-      Object.values(data).forEach((item) => {
-        const newRequest = {
+      if (data) {
+        const newRequests = Object.values(data).map((item) => ({
           userLocation: item.geopoint.latitude,
           emotion: item.emotion,
-        }; 
-      });
-      
-     console.log(data)
+        }));
 
-      setRequests(currentRequests => [newRequest, ...currentRequests]);
+        setRequests((prevRequests) => [...newRequests, ...prevRequests]);
+      }
     }, 2000); // New request every 2 seconds
 
     return () => clearInterval(intervalId);
