@@ -41,8 +41,8 @@ const Home = () => {
       });
 
       const gradients = {
-        happy: ['rgba(0, 255, 0, 0)', 'rgba(127, 255, 0, 1)'], // Lighter green for happiness
-        sad: ['rgba(0, 0, 255, 0)', 'rgba(100, 149, 237, 1)'], // Cornflower blue for sadness
+        happy: ['rgba(0, 0, 255, 0)', 'rgba(100, 149, 237, 1)'], // Lighter green for happiness
+        sad: ['rgba(0, 255, 0, 0)', 'rgba(127, 255, 0, 1)'], // Cornflower blue for sadness
         angry: ['rgba(255, 0, 0, 0)', 'rgba(255, 69, 0, 1)'], // Orange-red for anger
         surprised: ['rgba(255, 255, 0, 0)', 'rgba(255, 215, 0, 1)'], // Golden yellow for surprise
       };
@@ -137,7 +137,7 @@ const Home = () => {
       {/* ------------ ABOUT SECTION ------------------*/}
       <div className='bg-gradient-to-br from-white via-orange-200 to-orange-500 h-screen flex flex-col items-center justify-center text-center px-4'>
         <h3 className='text-black text-[8rem] font-bold mb-4 leading-tight'>
-          About this project
+          About
         </h3>
         <p className='text-black-200 text-xl mb-6 about'>
           Lorem Ipsum es simplemente el texto de relleno de las imprentas y
@@ -152,6 +152,19 @@ const Home = () => {
           recientemente con software de autoedición, como por ejemplo Aldus
           PageMaker, el cual incluye versiones de Lorem Ipsum.
         </p>
+
+        {/* GitHub Icon */}
+        <a
+        href='https://github.com/MartinOravecSvK/BrisHack2024'
+        target='_blank'
+        rel='noopener noreferrer'
+        className='mt-8 flex items-center text-gray-800 dark:text-white hover:underline'
+        >
+          <svg class="w-20 h-20 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2c-2.4 0-4.7.9-6.5 2.4a10.5 10.5 0 0 0-2 13.1A10 10 0 0 0 8.7 22c.5 0 .7-.2.7-.5v-2c-2.8.7-3.4-1.1-3.4-1.1-.1-.6-.5-1.2-1-1.5-1-.7 0-.7 0-.7a2 2 0 0 1 1.5 1.1 2.2 2.2 0 0 0 1.3 1 2 2 0 0 0 1.6-.1c0-.6.3-1 .7-1.4-2.2-.3-4.6-1.2-4.6-5 0-1.1.4-2 1-2.8a4 4 0 0 1 .2-2.7s.8-.3 2.7 1c1.6-.5 3.4-.5 5 0 2-1.3 2.8-1 2.8-1 .3.8.4 1.8 0 2.7a4 4 0 0 1 1 2.7c0 4-2.3 4.8-4.5 5a2.5 2.5 0 0 1 .7 2v2.8c0 .3.2.6.7.5a10 10 0 0 0 5.4-4.4 10.5 10.5 0 0 0-2.1-13.2A9.8 9.8 0 0 0 12 2Z" clip-rule="evenodd"/>
+          </svg>
+
+        </a>
       </div>
     </div>
   );
