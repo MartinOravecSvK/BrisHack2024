@@ -22,8 +22,6 @@ const RequestSimulation = () => {
   // }, [dispatch]);
 
   useEffect(() => {
-
-
     if (!loading && mapRef.current && window.google && data) {
       const emotionData = {
         happy: [],
@@ -31,21 +29,29 @@ const RequestSimulation = () => {
         angry: [],
         surprised: [],
       };
-    }    
-
+    }
+  
     const intervalId = setInterval(() => {
       if (data) {
-        const newRequests = Object.values(data).map((item) => ({
-          userLocation: item.geopoint.latitude,
-          emotion: item.emotion,
-        }));
-
-        setRequests((prevRequests) => [...newRequests, ...prevRequests]);
+        const dataArray = Object.values(data);
+        
+        // Grab a random record from dataArray
+        const randomIndex = Math.floor(Math.random() * dataArray.length);
+        const randomItem = dataArray[randomIndex];
+  
+        // Create a newRequest from the random item
+        const newRequest = {
+          userLocation: randomItem.geopoint.latitude,
+          emotion: randomItem.emotion.charAt(0).toUpperCase() + randomItem.emotion.slice(1),
+        };
+  
+        setRequests((prevRequests) => [...prevRequests, newRequest]);
       }
-    }, 2000); // New request every 2 seconds
-
-    return () => clearInterval(intervalId);
-  }, []);
+    }, 2000);
+  
+    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
+  }, [loading, mapRef, window.google, data]);
+  
 
   return (
     <div className='requestContainer'>
