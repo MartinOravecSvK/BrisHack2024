@@ -65,6 +65,7 @@ const Home = () => {
         ref={mapRef} // Set reference to access map object
       />
     </div>
+
   );
 };
 

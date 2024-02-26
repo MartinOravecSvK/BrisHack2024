@@ -75,12 +75,12 @@ emotion_window = []
 # starting video streaming
 
 cv2.namedWindow('window_frame')
-video_capture = cv2.VideoCapture(0)
+# video_capture = cv2.VideoCapture(0)
 
 # Select video or webcam feed
 cap = None
 if (USE_WEBCAM == True):
-    cap = cv2.VideoCapture(0) # Webcam source
+    cap = cv2.VideoCapture(-1) # Webcam source
 else:
     cap = cv2.VideoCapture('./demo/dinner.mp4') # Video file source
 
