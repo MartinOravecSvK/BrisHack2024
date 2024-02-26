@@ -1,39 +1,88 @@
 .homeScreen {
-  /* position: relative;
-
-  display: flex;
   align-items: center;
-  justify-content: center; */
-
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
 
   height: 100vh; /* Full height of the viewport */
-  padding-left: 20px;
-  /* background-image: url('bg.jpg'); Replace with the path to your image */
   background-size: contain; /* Adjust based on how you want the background to be sized */
   background-position: center; /* Adjust based on how you want the background to be positioned */
+  overflow: auto; /* Allow scrolling */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
 }
 
-.homeScreen::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(253, 253, 253, 0.5); /* Adjust the color and opacity (0.5 is 50% opacity) */
+.homeScreen::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome and Safari */
+}
+
+/* HERO SECTION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animation-fadeIn {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* MAP SECTION */
+.mapComponent {
+  width: 100%;
+  height: 100vh; /* Adjust the height as needed */
+  display: flex;
+  flex-direction: row;
+  padding: 80px;
 }
 
 .mapContainer {
-    width: 100%;
-    height: 95vh; /* Adjust the height as needed */
-    position: relative;
-    border-radius: 12px; /* Add rounded corners */
-    overflow: hidden; /* Ensure content doesn't overflow rounded corners */
-    margin-left: 1vh;
-    /* margin-top: 20px; */
+  width: 65%;
+  height: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-left: 1vh;
+}
+
+.requestContainer {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2vh;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.request {
+  width: 90%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 2vh;
+  border-radius: 12px;
+  background-color: #f4a872;
+  margin-bottom: 2%;
+}
+
+.about {
+  padding: 50px;
+  width: 70%;
 }
