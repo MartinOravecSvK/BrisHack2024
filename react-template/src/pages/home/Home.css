@@ -86,3 +86,7 @@
   padding: 50px;
   width: 70%;
 }
+
+button.gm-ui-hover-effect {
+  visibility: hidden;
+}

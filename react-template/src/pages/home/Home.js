@@ -79,10 +79,37 @@ const Home = () => {
             scale: 0, // Invisible marker
           },
         });
+        
+        // const infowindow = new window.google.maps.InfoWindow({
+        //   content: item.emotion,
+        // });
+
+
+        const emotion = item.emotion
+        const capitalizedEmotion = emotion.charAt(0).toUpperCase() + emotion.slice(1);
+
+        const contentString = `
+          <div style="font-family: Arial, sans-serif; text-align: center;">
+            <style>
+              h3 {
+                font-weight: bold;
+              }
+            </style>
+            <h3>Emotion:</h3>
+            <p>${capitalizedEmotion}</p>
+          </div>
+        `;
+
+        const infowindowContainer = document.createElement("div");
+        infowindowContainer.innerHTML = contentString;
 
         const infowindow = new window.google.maps.InfoWindow({
-          content: item.emotion,
+          content: infowindowContainer,
         });
+
+        // const infowindow = new window.google.maps.InfoWindow({conntent: })
+
+        // infowindow.setContent(contentString)
 
         marker.addListener('mouseover', () =>
           infowindow.open({
@@ -93,6 +120,18 @@ const Home = () => {
         );
 
         marker.addListener('mouseout', () => infowindow.close());
+
+        window.google.maps.event.addListener(infowindow, "domready", () => {
+          const closeButton = infowindowContainer.querySelector(".gm-ui-hover-effect");
+          if (closeButton) {
+            closeButton.style.display = "hidden";
+          }
+          
+        });
+          
+
+
+
       });
     }
   }, [data, loading]);
