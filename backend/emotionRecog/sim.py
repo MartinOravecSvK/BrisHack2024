@@ -159,20 +159,3 @@ while True:
         end_time = time.time()
         print(f"Time to simulate {count} emotions: {end_time - start_time}")
         start_time = time.time()
-    
-
-print("The latitude of the location is: ", location.latitude)
-print("The longitude of the location is: ", location.longitude)
-
-# Simulate emotion based on city happiness score
-# For demonstration, using a static value. Replace with actual happiness score retrieval
-happiness_score = city_happiness.get(user_input, 0.5)  # Fallback to a neutral score if city is unknown
-simulated_emotion = simulate_emotion(happiness_score)
-
-# Asynchronously add simulated data to Firebase
-geopoint = {'latitude': location.latitude, 'longitude': location.longitude}
-emotion_string = simulated_emotion
-
-# Call the existing asynchronous function to add data to Firebase
-import asyncio
-asyncio.run(add_map_data(geopoint, 'user', emotion_string))
