@@ -115,7 +115,7 @@ const Home = () => {
             </span>
           ))}
         </h1>
-        <p className='text-black-200 font-bold text-xl mb-6'>Brishack 2024</p>
+        <p className='text-black-200 font-bold text-xl mb-6'>Mapping smiles across the world</p>
       </div>
 
       {/* ------------ MAP SECTION ------------------*/}
@@ -139,18 +139,16 @@ const Home = () => {
         <h3 className='text-black text-[8rem] font-bold mb-4 leading-tight'>
           About
         </h3>
-        <p className='text-black-200 text-xl mb-6 about'>
-          Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-          archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de
-          las industrias desde el año 1500, cuando un impresor (N. del T.
-          persona que se dedica a la imprenta) desconocido usó una galería de
-          textos y los mezcló de tal manera que logró hacer un libro de textos
-          especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como
-          texto de relleno en documentos electrónicos, quedando esencialmente
-          igual al original. Fue popularizado en los 60s con la creación de las
-          hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más
-          recientemente con software de autoedición, como por ejemplo Aldus
-          PageMaker, el cual incluye versiones de Lorem Ipsum.
+        <p className='text-black-200 text-base mb-6 about'>
+          MoodMap is our entry for the Brishack 2024 hackathon – an innovative web application which seamlessly integrates facial recognition algorithms
+          to interpret and map people's emotions, through which we can understand the collective mood of a nation.  Imagine it like a big map showing how everyone's 
+          feeling! Joining is super easy – just turn on your camera, and we'll add your expression to the map. It's a fun way to see the overall mood of our nation in 
+          real-time!
+          Our tech stack is robust, combining the versatility of Python for the backend, React for a sleek and interactive frontend, Firebase for seamless data handling,
+          TensorFlow for facial emotion recognition, and Tailwind for a polished user interface.  The synergy of these technologies ensures a smooth and engaging user experience.
+          At its core, MoodMap is about fostering connection through shared emotional experiences, creating a sense of belonging that transcends geographical boundaries.
+          By offering valuable insights into the collective mood of communities, MoodMap has the potential to help governments allocate resources where they're needed most,
+          serving as a tool for early intervention.
         </p>
 
         {/* GitHub Icon */}
@@ -158,9 +156,9 @@ const Home = () => {
         href='https://github.com/MartinOravecSvK/BrisHack2024'
         target='_blank'
         rel='noopener noreferrer'
-        className='mt-8 flex items-center text-gray-800 dark:text-white hover:underline'
+        className='mt-8 flex items-center text-gray-800 dark:text-white hover:underline hover:opacity-70 transition-opacity duration-300 ease-in-out'
         >
-          <svg class="w-20 h-20 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-20 h-20 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg " fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd" d="M12 2c-2.4 0-4.7.9-6.5 2.4a10.5 10.5 0 0 0-2 13.1A10 10 0 0 0 8.7 22c.5 0 .7-.2.7-.5v-2c-2.8.7-3.4-1.1-3.4-1.1-.1-.6-.5-1.2-1-1.5-1-.7 0-.7 0-.7a2 2 0 0 1 1.5 1.1 2.2 2.2 0 0 0 1.3 1 2 2 0 0 0 1.6-.1c0-.6.3-1 .7-1.4-2.2-.3-4.6-1.2-4.6-5 0-1.1.4-2 1-2.8a4 4 0 0 1 .2-2.7s.8-.3 2.7 1c1.6-.5 3.4-.5 5 0 2-1.3 2.8-1 2.8-1 .3.8.4 1.8 0 2.7a4 4 0 0 1 1 2.7c0 4-2.3 4.8-4.5 5a2.5 2.5 0 0 1 .7 2v2.8c0 .3.2.6.7.5a10 10 0 0 0 5.4-4.4 10.5 10.5 0 0 0-2.1-13.2A9.8 9.8 0 0 0 12 2Z" clip-rule="evenodd"/>
           </svg>
 
