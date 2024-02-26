@@ -11,6 +11,7 @@ const RequestSimulation = () => {
   const getMapDataReducer = useSelector((state) => state.getMapData);
   // const { error: getMapDataError, loading: getMapDataLoading, data: mapData } = getMapDataReducer;
   const { error, loading, data } = getMapDataReducer;
+  const [newRequests, setNewRequests] = useState('')
   
   // if(mapData.length > 0){
   //   console.log(mapData[0])
@@ -30,14 +31,7 @@ const RequestSimulation = () => {
         angry: [],
         surprised: [],
       };
-    }
-    const newRequests = Object.values(data).map((item) => ({
-      userLocation: item.geopoint.latitude,
-      emotion: item.emotion,
-    }));
-
-    setRequests((prevRequests) => [...newRequests, ...prevRequests]);
-    
+    }    
 
     const intervalId = setInterval(() => {
       if (data) {
