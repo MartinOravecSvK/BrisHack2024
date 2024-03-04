@@ -2,6 +2,8 @@
 
 Welcome to MoodMap, an advanced web application designed for the Brishack 2024 hackathon. MoodMap utilises cutting-edge facial recognition algorithms to interpret and map people's emotions, providing valuable insights into the collective mood of a nation. It is a powerful tool that can be utilised by the government to track the mental health of a population.
 
+![Example Image](home.png)
+
 ## Features
 
 - **Real-Time Emotional Mapping**: MoodMap captures video feed from webcams, livestreams, and videos to create a dynamic representation of the nation's mood in real-time.
@@ -9,6 +11,8 @@ Welcome to MoodMap, an advanced web application designed for the Brishack 2024 h
 - **Emotion Heat Map**: The emotions are visualised as a heat map, providing an intuitive and comprehensive overview of the emotional landscape. Users can identify specific emotions by simply hovering over the heat map.
 
 - **Government Utilisation**: MoodMap serves as a valuable resource for governments to assess and monitor the mental health of the nation. The insights gained can assist in resource allocation for early intervention and support where needed the most.
+
+![Example Image](main.png)
 
 ## Technology Stack
 
