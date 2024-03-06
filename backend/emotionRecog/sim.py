@@ -92,19 +92,19 @@ def simulate_emotion(happiness_score):
     return emotion
 
 
-async def add_map_data(geopoint, user_name, emotion_string):
-    url = 'https://brishack-f6111-default-rtdb.europe-west1.firebasedatabase.app/users.json'
-    data = {
-        'geopoint': geopoint,
-        'emotion': emotion_string
-    }
-    async with aiohttp.ClientSession() as session:
-        async with session.post(url, data=json.dumps(data), headers={'Content-Type': 'application/json'}) as response:
-            if response.status == 200:
-                data = await response.json()
-                print('Data saved:', data)
-            else:
-                print('Failed to save data')
+# async def add_map_data(geopoint, user_name, emotion_string):
+#     url = 'https://brishack-f6111-default-rtdb.europe-west1.firebasedatabase.app/users.json'
+#     data = {
+#         'geopoint': geopoint,
+#         'emotion': emotion_string
+#     }
+#     async with aiohttp.ClientSession() as session:
+#         async with session.post(url, data=json.dumps(data), headers={'Content-Type': 'application/json'}) as response:
+#             if response.status == 200:
+#                 data = await response.json()
+#                 print('Data saved:', data)
+#             else:
+#                 print('Failed to save data')
 
 count = 0
 
@@ -151,9 +151,12 @@ while True:
     # Uncomment the add_map_data line to add data to Firebase
     # Asynchronously add simulated data to Firebase)
     try:
+        if location is None:
+            continue
         l = geolocator.geocode(location)
-        asyncio.run(add_map_data((l.latitude,l.longitude), 'user', emotion))
+        # asyncio.run(add_map_data((l.latitude,l.longitude), 'user', emotion))
         print(f"Location: {location}, Emotion: {emotion}")
+        # print(f"latitude: {l.latitude}, longitude: {l.longitude}")
     except Exception as e:
         print(e)
 
@@ -162,5 +165,5 @@ while True:
     if count % 100 == 0:
         end_time = time.time()
         print(f"Time to simulate {count} emotions: {end_time - start_time}")
-        print(locationDict)
+        # print(locationDict)
         start_time = time.time()
