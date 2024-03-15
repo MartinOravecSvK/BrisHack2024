@@ -48,21 +48,12 @@ Welcome to MoodMap, an advanced web application designed for the Brishack 2024 h
    FIREBASE_DATABASE_UR=YOUR-KEY
    ```
 
-3. **Install Backend Dependencies**
-
-   Using conda:
-
-   ```
-   conda create my-env python=3.11
-   conda install 
-   ```
-
 ### Frontend (visualization web app)
 
 1. **Install Dependencies**:
    ```
    cd react_template
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 2. **Run the Application**:
@@ -72,6 +63,25 @@ Welcome to MoodMap, an advanced web application designed for the Brishack 2024 h
 
 3. **Open Your Browser**:
    Navigate to `http://localhost:3000` to experience MoodMap firsthand.
+
+
+
+### Backend
+
+0. **Locate Backend**
+
+   ```bash
+   cd backend/emotionRecog
+   ```
+
+1. **Install Dependencies**
+
+   Using conda:
+
+   ```bash
+   conda create my-env python=3.11
+   conda install 
+   ```
 
 ## Contribution Guidelines
 
