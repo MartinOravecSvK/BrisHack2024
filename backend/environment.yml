@@ -1,0 +1,8 @@
+name: brishack24
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - python-dotenv
+prefix: /home/martin/Downloads/yes/envs/brishack24

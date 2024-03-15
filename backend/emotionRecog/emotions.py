@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+import os
+from dotenv import load_dotenv
 from keras.models import load_model
 from statistics import mode
 from utils.datasets import get_labels
@@ -18,8 +20,11 @@ import asyncio
 import aiohttp
 import json
 
+load_dotenv()
+URL = os.getenv('DATABASE_URL')
+
 # Initialize Nominatim API
-geolocator = Nominatim(user_agent="MyApp")
+geolocator = Nominatim(user_agent="Martin")
 
 while True:
     user_input = input("Enter your Location: ")
@@ -34,7 +39,7 @@ print("The longitude of the location is: ", location.longitude)
 
 
 async def add_map_data(geopoint, user_name, emotion_string):
-    url = 'https://brishack-f6111-default-rtdb.europe-west1.firebasedatabase.app/users.json'
+    url = URL
     data = {
         'geopoint': geopoint,
         'emotion': emotion_string

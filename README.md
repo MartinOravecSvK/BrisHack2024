@@ -33,18 +33,44 @@ Welcome to MoodMap, an advanced web application designed for the Brishack 2024 h
    git clone https://github.com/MartinOravecSvK/BrisHack2024.git
    ```
 
-2. **Install Dependencies**:
+2. **Add .env file**
+
+   ```
+   cd react_template
+   ```
+
+   Add .env with the following variables:
+
+   ```
+   REACT_APP_BASE_URL=http://127:0:0:1:8000
+   REACT_APP_MODE="development"
+   REACT_APP_GOOGLE_MAPS_API_KEY=YOUR-KEY
+   FIREBASE_DATABASE_UR=YOUR-KEY
+   ```
+
+3. **Install Backend Dependencies**
+
+   Using conda:
+
+   ```
+   conda create my-env python=3.11
+   conda install 
+   ```
+
+### Frontend (visualization web app)
+
+1. **Install Dependencies**:
    ```
    cd react_template
    npm install
    ```
 
-3. **Run the Application**:
+2. **Run the Application**:
    ```
    npm start
    ```
 
-4. **Open Your Browser**:
+3. **Open Your Browser**:
    Navigate to `http://localhost:3000` to experience MoodMap firsthand.
 
 ## Contribution Guidelines
