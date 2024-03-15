@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMapData, addMapData } from '../../store/actions/actions';
+import { getMapData } from '../../store/actions/actions';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import RequestSimulation from '../../components/requestSimulation/RequestSimulation';
 
@@ -11,14 +11,14 @@ const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 const Home = () => {
   const dispatch = useDispatch();
   const mapRef = useRef(null);
-
+  
   const getMapDataReducer = useSelector((state) => state.getMapData);
   const { error, loading, data } = getMapDataReducer;
-
+  
   useEffect(() => {
     dispatch(getMapData());
   }, [dispatch]);
-
+  
   useEffect(() => {
     
     if (!loading && mapRef.current && window.google && data) {
@@ -129,16 +129,12 @@ const Home = () => {
           }
           
         });
-          
-
-
-
       });
     }
   }, [data, loading]);
 
   if (loading) return <div className='homeScreen'>Loading...</div>;
-  if (error) return <div className='homeScreen'>Error: {error}</div>;
+  // if (error) return <div className='homeScreen'>Error: {error}</div>;
 
   return (
     <div className='homeScreen'>
