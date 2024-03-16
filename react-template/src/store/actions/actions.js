@@ -1,12 +1,12 @@
 import * as c from '../../constants/constants';
 import { DATABASE_URL } from '../../environment'
 
-/* 
+ 
 const geopoint = {
   latitude: 40.712776, // Example latitude
   longitude: -74.005974 // Example longitude
 };
-*/
+
 export const addMapData = (geopoint, emotion) => {
   return async (dispatch) => {
     try {
@@ -44,14 +44,16 @@ export const getMapData = () => {
       const response = await fetch(
         DATABASE_URL
       );
+      console.log('response:', response);
       if (!response.ok) throw new Error('Failed to fetch data');
       const data = await response.json();
-
+      
       dispatch({
         type: c.GET_MAP_DATA_SUCCESS,
         payload: data,
       });
     } catch (error) {
+      console.log('error:', error);
       dispatch({
         type: c.GET_MAP_DATA_FAIL,
         payload: error.message,

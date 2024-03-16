@@ -134,7 +134,7 @@ const Home = () => {
   }, [data, loading]);
 
   if (loading) return <div className='homeScreen'>Loading...</div>;
-  // if (error) return <div className='homeScreen'>Error: {error}</div>;
+  if (error) return <div className='homeScreen'>Error: {error}</div>;
 
   return (
     <div className='homeScreen'>
