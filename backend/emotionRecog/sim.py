@@ -1,5 +1,7 @@
 import numpy as np
 import time
+import os
+from dotenv import load_dotenv
 from statistics import mode
 import pandas as pd
 import requests
@@ -12,6 +14,10 @@ from geopy.geocoders import Nominatim, GeoNames
 import asyncio
 import aiohttp
 import json
+
+load_dotenv()
+URL = os.getenv('DATABASE_URL')
+USERNAME = "REPLACE ME" # Replace with your GeoNames username
 
 geolocator = Nominatim(user_agent="MyApp")
 
@@ -27,6 +33,7 @@ countryCities = {}
 #     "CityB": 0.2
 # }
 
+# Some countries did not have a mapping in pycountry, so we added them manually
 custom_country_mappings = {
     "Kosovo": {"alpha_2": "XK", "alpha_3": "XKX", "name": "Kosovo"},
     "Taiwan": {"alpha_2": "TW", "alpha_3": "TWN", "name": "Taiwan"},
@@ -62,7 +69,7 @@ def get_cities(country):
     
     country_code, _ = get_country_codes(country)
 
-    username = 'martinoravec'  # Replace with your GeoNames username
+    username = USERNAME 
     url = f'http://api.geonames.org/searchJSON?country={country_code}&featureClass=P&maxRows=10&username={username}'
     
     response = requests.get(url)
@@ -93,7 +100,7 @@ def simulate_emotion(happiness_score):
 
 
 async def add_map_data(geopoint, user_name, emotion_string):
-    url = 'https://brishack-f6111-default-rtdb.europe-west1.firebasedatabase.app/users.json'
+    url = URL
     data = {
         'geopoint': geopoint,
         'emotion': emotion_string
@@ -151,9 +158,12 @@ while True:
     # Uncomment the add_map_data line to add data to Firebase
     # Asynchronously add simulated data to Firebase)
     try:
+        if location is None:
+            continue
         l = geolocator.geocode(location)
-        asyncio.run(add_map_data((l.latitude,l.longitude), 'user', emotion))
+        # asyncio.run(add_map_data((l.latitude,l.longitude), 'user', emotion))
         print(f"Location: {location}, Emotion: {emotion}")
+        # print(f"latitude: {l.latitude}, longitude: {l.longitude}")
     except Exception as e:
         print(e)
 
@@ -162,5 +172,5 @@ while True:
     if count % 100 == 0:
         end_time = time.time()
         print(f"Time to simulate {count} emotions: {end_time - start_time}")
-        print(locationDict)
+        # print(locationDict)
         start_time = time.time()

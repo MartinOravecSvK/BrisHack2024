@@ -18,7 +18,7 @@ Welcome to MoodMap, an advanced web application designed for the Brishack 2024 h
 
 - **Backend**: Developed using the robust and versatile Python programming language.
 
-- **Frontend**: Powered by React to ensure a sleek, interactive, and user-friendly interface.
+- **Frontend**: Powered by React to ensure a sleek, interactive, and user-friendly interface. Template courtesy of [Damian](https://github.com/damianstone/react-template).
 
 - **Data Handling**: Firebase is integrated for seamless data handling, ensuring efficient and secure processing of information.
 
@@ -33,19 +33,91 @@ Welcome to MoodMap, an advanced web application designed for the Brishack 2024 h
    git clone https://github.com/MartinOravecSvK/BrisHack2024.git
    ```
 
-2. **Install Dependencies**:
+2. **Add .env file**
+
    ```
    cd react_template
-   npm install
    ```
 
-3. **Run the Application**:
+   Add .env with the following variables:
+
+   ```
+   REACT_APP_BASE_URL=http://127:0:0:1:8000
+   REACT_APP_MODE="development"
+   REACT_APP_GOOGLE_MAPS_API_KEY=YOUR-KEY
+   REACT_APP_FIREBASE_DATABASE_URL=YOUR-DATABASE-URL
+   ```
+
+   Note: 
+   
+   For secure firebase setup follow the necessary steps, you can do this in the project settings in Firebase (under General).
+
+### Frontend (visualization web app)
+
+1. **Install Dependencies**:
+
+   ```
+   cd react_template
+   npm install --legacy-peer-deps
+   ```
+
+2. **Run the Application**:
+
    ```
    npm start
    ```
 
-4. **Open Your Browser**:
+3. **Open Your Browser**:
    Navigate to `http://localhost:3000` to experience MoodMap firsthand.
+
+
+
+### Backend
+
+0. **Locate Backend**:
+
+   ```bash
+   cd backend/emotionRecog
+   ```
+
+1. **Install Dependencies**:
+
+   Using conda:
+
+   ```bash
+   cd emotionRecog
+   conda env create -f environment.yml
+   conda activate brishack24
+   ```
+
+2. **Add .env File**:
+
+   .env
+   ```bash
+   DATABASE_URL=YOUR-DATABASE-URL
+   USER_AGENT = USERNAME-FOR-NOMINATIM
+   ```
+
+   Note: 
+   
+   - For secure firebase setup follow the necessary steps, you can do this in the project settings in Firebase (under General).
+   - To setup Nominatim simply go to their [website](https://nominatim.org/) and create an account (for more information check their documentation)
+
+3. **Run Emotion Detection**:
+
+   Run emotion.py from within emotionRecog directory.
+
+   ```bash
+   python emotions.py   
+   ```
+
+4. **Run Countries Simulation**
+
+   If you want you can run a simulation of emotion detected in different countries that is generated through a random process based on the countries statistics.
+
+   ```bash
+   python sim.py
+   ```
 
 ## Contribution Guidelines
 

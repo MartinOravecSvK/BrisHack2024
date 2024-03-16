@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+import os
+from dotenv import load_dotenv
 from keras.models import load_model
 from statistics import mode
 from utils.datasets import get_labels
@@ -18,8 +20,12 @@ import asyncio
 import aiohttp
 import json
 
+load_dotenv()
+URL = os.getenv('DATABASE_URL')
+USER_AGENT = os.getenv('USER_AGENT')
+
 # Initialize Nominatim API
-geolocator = Nominatim(user_agent="MyApp")
+geolocator = Nominatim(user_agent=USER_AGENT)
 
 while True:
     user_input = input("Enter your Location: ")
@@ -34,7 +40,7 @@ print("The longitude of the location is: ", location.longitude)
 
 
 async def add_map_data(geopoint, user_name, emotion_string):
-    url = 'https://brishack-f6111-default-rtdb.europe-west1.firebasedatabase.app/users.json'
+    url = URL
     data = {
         'geopoint': geopoint,
         'emotion': emotion_string
@@ -82,7 +88,7 @@ cap = None
 if (USE_WEBCAM == True):
     cap = cv2.VideoCapture(0) # Webcam source
 else:
-    cap = cv2.VideoCapture('./demo/dinner.mp4') # Video file source
+    cap = cv2.VideoCapture('./your-video-source') # Video file source
 
 while cap.isOpened(): # True:
     ret, bgr_image = cap.read()
@@ -136,7 +142,7 @@ while cap.isOpened(): # True:
 
         draw_bounding_box(face_coordinates, rgb_image, color)
         draw_text(face_coordinates, rgb_image, emotion_mode,
-                  color, 0, -45, 1, 1)
+                color, 0, -45, 1, 1)
 
     bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
     cv2.imshow('window_frame', bgr_image)
@@ -144,7 +150,7 @@ while cap.isOpened(): # True:
     try:
         asyncio.run(add_map_data({'latitude': location.latitude, 'longitude': location.longitude}, 'user', emotion_mode))
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An Error occurred: {e}")
         continue
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
