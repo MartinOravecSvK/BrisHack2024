@@ -88,7 +88,6 @@ Welcome to MoodMap, an advanced web application designed for the Brishack 2024 h
    cd emotionRecog
    conda env create -f environment.yml
    conda activate brishack24
-   pip install -r requirements.txt
    ```
 
 2. **Add .env File**:
